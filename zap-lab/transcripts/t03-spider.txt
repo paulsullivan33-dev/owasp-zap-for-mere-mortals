@@ -1,0 +1,20 @@
+$ curl -s -H "X-ZAP-API-Key: labkey42" "http://127.0.0.1:18924/JSON/spider/action/scan/?url=http://127.0.0.1:18923/"
+{"scan":"0"}
+$ curl -s -H "X-ZAP-API-Key: labkey42" "http://127.0.0.1:18924/JSON/spider/view/status/?scanId=0"
+{"status":"100"}
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/urls/
+{"urls":["http://127.0.0.1:18923","http://127.0.0.1:18923/","http://127.0.0.1:18923/hello?name=guest","http://127.0.0.1:18923/item?id=1","http://127.0.0.1:18923/login","http://127.0.0.1:18923/robots.txt","http://127.0.0.1:18923/search?q=tomato","http://127.0.0.1:18923/sitemap.xml"]}
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/alerts/ | python3 alert_summary.py
+  1  [Medium] Absence of Anti-CSRF Tokens
+  1  [Informational] Authentication Request Identified
+  8  [Medium] Content Security Policy (CSP) Header Not Set
+  1  [Low] Cookie No HttpOnly Flag
+  1  [Low] Cookie without SameSite Attribute
+  1  [Informational] Information Disclosure - Suspicious Comments
+  6  [Medium] Missing Anti-clickjacking Header
+  8  [Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+  8  [Low] Server Leaks Version Information via "Server" HTTP Response Header Field
+  1  [Informational] Session Management Response Identified
+  6  [Low] X-Content-Type-Options Header Missing
+total alert instances: 42

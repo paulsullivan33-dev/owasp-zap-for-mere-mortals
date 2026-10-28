@@ -1,0 +1,16 @@
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/OTHER/core/other/htmlreport/ > zap-report.html
+exit=0
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/OTHER/core/other/jsonreport/ > zap-report.json
+exit=0
+$ ls -l zap-report.html zap-report.json
+total 132
+-rw-rw---- 1 root root 93570 Oct 28 19:02 zap-report.html
+-rw-rw---- 1 root root 39104 Oct 28 19:02 zap-report.json
+$ grep -o "Cross Site Scripting (Reflected)" zap-report.html | wc -l
+2
+$ python3 -c "import json; d=json.load(open(\"zap-report.json\")); print([s[\"name\"] for s in d[\"site\"]])"
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+KeyError: 'name'
+$ python3 -c "import json; d=json.load(open(\"zap-report.json\")); s=d[\"site\"][0]; print(s[\"@name\"], len(s[\"alerts\"]))"
+http://127.0.0.1:18923 alert types: 13

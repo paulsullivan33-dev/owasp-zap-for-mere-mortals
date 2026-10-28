@@ -1,0 +1,18 @@
+$ curl -s -H "X-ZAP-API-Key: labkey42" "http://127.0.0.1:18924/JSON/core/action/accessUrl/?url=http://127.0.0.1:18923/"
+{"code":"internal_error","message":"Internal Error"}
+
+# and in ~/.ZAP/zap.log:
+--
+2026-10-28 19:00:21,056 [ZAP-IO-Server-1-2] WARN  CoreAPI - Failed to send the HTTP request:
+java.net.SocketException: Connection reset
+
+# a ten-line Java program fetching the same page fails the same way:
+$ java Sock.java
+connected: /127.0.0.1:18923
+Exception in thread "main" java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+
+# with the IPv4 stack forced, the same program succeeds:
+$ java -Djava.net.preferIPv4Stack=true Sock.java
+connected: /127.0.0.1:18923
+read 60 bytes: HTTP/1.1 200 OK Server: BaseHTTP/0.6 Python/3.12.3 Date: W

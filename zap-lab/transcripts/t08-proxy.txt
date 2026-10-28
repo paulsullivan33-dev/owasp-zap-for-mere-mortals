@@ -1,0 +1,30 @@
+# ZAP is running as a daemon on 127.0.0.1:18924 (zap.sh -daemon).
+# This curl talks to the practice app THROUGH ZAP, the way a browser would:
+$ curl -i --noproxy "" -x http://127.0.0.1:18924 "http://127.0.0.1:18923/hello?name=guest"
+HTTP/1.1 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Wed, 28 Oct 2026 19:04:35 GMT
+X-Powered-By: LabApp/1.0
+Content-Type: text/html; charset=utf-8
+Content-Length: 103
+
+<!DOCTYPE html>
+<html>
+<head><title>Hello</title></head>
+<body>
+<h1>Hello, guest!</h1>
+</body>
+</html>
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/urls/
+{"urls":["http://127.0.0.1:18923"]}
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/numberOfMessages/
+{"numberOfMessages":"2"}
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/alerts/ | python3 alert_summary.py
+  1  [Medium] Content Security Policy (CSP) Header Not Set
+  1  [Medium] Missing Anti-clickjacking Header
+  1  [Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+  1  [Low] Server Leaks Version Information via "Server" HTTP Response Header Field
+  1  [Low] X-Content-Type-Options Header Missing
+total alert instances: 5

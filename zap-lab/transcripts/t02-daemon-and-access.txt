@@ -1,0 +1,19 @@
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/version/
+{"version":"2.17.0"}
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" "http://127.0.0.1:18924/JSON/core/action/accessUrl/?url=http://127.0.0.1:18923/" | head -c 300
+{"accessUrl":[{"note":"","rtt":"24","responseBody":"<!DOCTYPE html>\n<html>\n<head><title>Seed Store<\/title><\/head>\n<body>\n\n<h1>The Seed Store<\/h1>\n<p>A tiny practice shop, built to be scanned.<\/p>\n<ul>\n  <li><a href=\"/hello?name=guest\">Say hello<\/a><\/li>\n  <li><a href=\"/item?id=1\"> ...
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/urls/
+{"urls":["http://127.0.0.1:18923"]}
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/pscan/view/recordsToScan/
+{"recordsToScan":"0"}
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/alerts/ | python3 alert_summary.py
+  1  [Medium] Content Security Policy (CSP) Header Not Set
+  1  [Informational] Information Disclosure - Suspicious Comments
+  1  [Medium] Missing Anti-clickjacking Header
+  1  [Low] Server Leaks Information via "X-Powered-By" HTTP Response Header Field(s)
+  1  [Low] Server Leaks Version Information via "Server" HTTP Response Header Field
+  1  [Low] X-Content-Type-Options Header Missing
+total alert instances: 6

@@ -1,0 +1,14 @@
+$ cd ZAP_2.17.0
+$ ./zap.sh -version
+Found Java version 21.0.12.1
+Available memory: 7935 MB
+Using JVM args: -Xmx1983m
+3161 [main] INFO  org.parosproxy.paros.Constant - Copying default configuration to /root/.ZAP/config.xml
+3912 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/session
+3916 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/dirbuster
+3916 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/fuzzers
+3916 [main] INFO  org.parosproxy.paros.Constant - Creating directory /root/.ZAP/plugin
+Oct 28, 2026 6:43:27 PM java.util.prefs.FileSystemPreferences$1 run
+INFO: Created user preferences directory.
+No check for updates for over 3 month - add-ons may well be out of date
+2.17.0

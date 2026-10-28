@@ -1,0 +1,74 @@
+$ curl -i http://127.0.0.1:18923/
+HTTP/1.1 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Wed, 28 Oct 2026 18:49:28 GMT
+X-Powered-By: LabApp/1.0
+Content-Type: text/html; charset=utf-8
+Content-Length: 444
+
+<!DOCTYPE html>
+<html>
+<head><title>Seed Store</title></head>
+<body>
+
+<h1>The Seed Store</h1>
+<p>A tiny practice shop, built to be scanned.</p>
+<ul>
+  <li><a href="/hello?name=guest">Say hello</a></li>
+  <li><a href="/item?id=1">Item 1</a></li>
+  <li><a href="/search?q=tomato">Search for tomato</a></li>
+  <li><a href="/login">Staff login</a></li>
+</ul>
+<!-- TODO before launch: remove the test account (admin / admin123) -->
+
+</body>
+</html>
+
+$ curl -i "http://127.0.0.1:18923/hello?name=guest"
+HTTP/1.1 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Wed, 28 Oct 2026 18:49:28 GMT
+X-Powered-By: LabApp/1.0
+Content-Type: text/html; charset=utf-8
+Content-Length: 103
+
+<!DOCTYPE html>
+<html>
+<head><title>Hello</title></head>
+<body>
+<h1>Hello, guest!</h1>
+</body>
+</html>
+
+$ curl -i -X POST -d "user=admin&pass=admin123" http://127.0.0.1:18923/login
+HTTP/1.1 200 OK
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Wed, 28 Oct 2026 18:49:28 GMT
+X-Powered-By: LabApp/1.0
+Content-Type: text/html; charset=utf-8
+Content-Length: 132
+Set-Cookie: session=lab-session-42; Path=/
+
+<!DOCTYPE html>
+<html>
+<head><title>Welcome</title></head>
+<body>
+<h1>Welcome back.</h1><p><a href="/">Home</a></p>
+</body>
+</html>
+
+$ curl -i "http://127.0.0.1:18923/item?id=1%27"
+HTTP/1.1 500 Internal Server Error
+Server: BaseHTTP/0.6 Python/3.12.3
+Date: Wed, 28 Oct 2026 18:49:28 GMT
+X-Powered-By: LabApp/1.0
+Content-Type: text/html; charset=utf-8
+Content-Length: 251
+
+<!DOCTYPE html>
+<html>
+<head><title>Error</title></head>
+<body>
+<h1>Database error</h1><p>You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '1''</p>
+</body>
+</html>

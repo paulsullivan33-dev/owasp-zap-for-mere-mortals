@@ -1,0 +1,12 @@
+Found Java version 21.0.12.1
+Read custom JVM args from /home/hatch/.ZAP/.ZAP_JVM.properties
+Using JVM args: -Xmx512m -Djava.net.preferIPv4Stack=true
+Writing results to /home/hatch/workspace/build-check/zap-scratch/lab/reports/zap-quick-report.html
+
+$ grep -oE "<th>[A-Z][^<]+</th>" zap-quick-report.html | sort -u
+      2 Absence of Anti-CSRF Tokens
+      2 Information Disclosure - Suspicious Comments
+      2 Missing Anti-clickjacking Header
+      1 Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</a></td>
+      1 Server Leaks Version Information via &quot;Server&quot; HTTP Response Header Field</th>
+      2 X-Content-Type-Options Header Missing

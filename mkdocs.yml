@@ -1,0 +1,30 @@
+site_name: OWASP ZAP for Mere Mortals
+site_description: A security scanner for web applications you own. Proxying your own browsing, spidering a practice app, reading the alerts from passive and active scans, and automating the whole thing through its API, with the ethics and the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/owasp-zap-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What OWASP ZAP Is: what-owasp-zap-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing OWASP ZAP: installing-owasp-zap.md
+  - Your First Scan: your-first-scan.md
+  - The Proxy — Seeing Your Own Traffic: the-proxy.md
+  - Spidering: spidering.md
+  - Passive Scanning: passive-scanning.md
+  - Active Scanning: active-scanning.md
+  - Reading Alerts: reading-alerts.md
+  - The API: the-api.md
+  - Reports: reports.md
+  - Contexts and Scope: contexts-and-scope.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

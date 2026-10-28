@@ -1,0 +1,36 @@
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/alerts/ | python3 alert_detail.py "Content Security Policy (CSP) Header Not Set"
+name: Content Security Policy (CSP) Header Not Set
+risk: Medium
+confidence: High
+url: http://127.0.0.1:18923/
+description: Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.
+solution: Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
+cweid: 693
+wascid: 15
+
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/alerts/ | python3 alert_detail.py "Cookie No HttpOnly Flag"
+name: Cookie No HttpOnly Flag
+risk: Low
+confidence: Medium
+url: http://127.0.0.1:18923/login
+param: session
+evidence: Set-Cookie: session
+description: A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.
+solution: Ensure that the HttpOnly flag is set for all cookies.
+cweid: 1004
+wascid: 13
+
+
+$ curl -s -H "X-ZAP-API-Key: labkey42" http://127.0.0.1:18924/JSON/core/view/alerts/ | python3 alert_detail.py "Information Disclosure - Suspicious Comments"
+name: Information Disclosure - Suspicious Comments
+risk: Informational
+confidence: Medium
+url: http://127.0.0.1:18923/
+evidence: TODO
+description: The response appears to contain suspicious comments which may help an attacker.
+solution: Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.
+cweid: 615
+wascid: 13
+
+
